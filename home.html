@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page 1</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <script src='assets/bootstrap/js/bootstrap.min.js'></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-group">
+            <label for="username">Enter your username:</label>
+            <input type="text" class="form-control" id="username">
+        </div>
+        <button id="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#submit').click(function() {
+                var username = $('#username').val();
+                localStorage.setItem('username', username);
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+</body>
+</html>

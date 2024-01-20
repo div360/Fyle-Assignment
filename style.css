@@ -1,0 +1,98 @@
+#topics{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(3rem, 2fr));
+
+}
+
+.topics-child {
+  border: 2px solid transparent;
+  border-radius: 40px;
+  display: inline-block;
+  max-width: 100%; 
+  word-wrap: break-word
+}
+
+/* #topics .js { 
+  background: 
+  linear-gradient(#202124, #202124) padding-box,
+  linear-gradient(60deg, #DEBB00, #F0E68C) border-box;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  display: inline-block;
+  font-size: 28px;
+  box-shadow: 0 0 10px #DEBB00;
+}
+
+.cpp {
+  background: 
+  linear-gradient(#202124, #202124) padding-box,
+  linear-gradient(60deg, blue, #00BFFF) border-box;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  display: inline-block;
+  font-size: 28px;
+  box-shadow: 0 0 10px blue;
+}
+.java {
+  background: 
+  linear-gradient(#202124, #202124) padding-box,
+  linear-gradient(60deg, #CB356B, #BD3F32) border-box;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  display: inline-block;
+  font-size: 28px;
+  box-shadow: 0 0 10px #BD3F32;
+ }
+.python {  background: 
+  linear-gradient(#202124, #202124) padding-box,
+  linear-gradient(60deg, #56ab2f, #a8e063) border-box;
+  border: 3px solid transparent;
+  border-radius: 40px;
+  display: inline-block;
+  font-size: 28px;
+  box-shadow: 0 0 10px #a8e063; }
+
+.ruby {  background: 
+  linear-gradient(#202124, #202124) padding-box,
+  linear-gradient(60deg, #654ea3, #f5af19) border-box;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  display: inline-block;
+  font-size: 28px;
+  box-shadow: 0 0 10px #f5af19; }
+
+.php {  background: 
+  linear-gradient(#202124, #202124) padding-box,
+  linear-gradient(60deg, blue, #00BFFF) border-box;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  display: inline-block;
+  font-size: 28px;
+  box-shadow: 0 0 10px blue; }
+
+.swift { background: 
+  linear-gradient(#202124, #202124) padding-box,
+  linear-gradient(60deg, blue, #00BFFF) border-box;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  display: inline-block;
+  font-size: 28px;
+  box-shadow: 0 0 10px blue; }
+
+.go {  background: 
+  linear-gradient(#202124, #202124) padding-box,
+  linear-gradient(60deg, blue, #00BFFF) border-box;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  display: inline-block;
+  font-size: 28px;
+  box-shadow: 0 0 10px blue;}
+
+.default {  background: 
+  linear-gradient(#202124, #202124) padding-box,
+  linear-gradient(60deg, blue, #00BFFF) border-box;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  display: inline-block;
+  font-size: 28px;
+  box-shadow: 0 0 10px blue;} */

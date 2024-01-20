@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src='assets/bootstrap/js/bootstrap.min.js'></script>
+    <style>
+        .line-clamp {
+            max-width: 70%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 4; /* Adjust the number of lines */
+        }
+
+        .line-clamp-2 {
+            max-width: 100%;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 2; /* Adjust the number of lines */
+        }
+    </style>
+</head>
+<body style="background-color: #202124;">
+    <div class="vh-100">
+        <div class=" m-0 p-0 container container-fluid">
+            <div class="row vh-100 vw-100 pt-3">
+                <div class="col-md-3">
+                    <div class="d-flex flex-column justify-content-center align-items-center p-4">
+                        <div id="avatar"></div>
+                        <p id="name" class="text-white font-weight-bold pt-3 fs-5"></p>
+                        <p id="url" class="text-white"> </p>
+                        <p id="description" class="text-white text-center fs-6 line-clamp"></p>
+                        <div class="d-flex justify-content-center align-content-center mt-2" style="height: 1.5rem;">
+                            <img src="./assets/location-pin.png" alt="" class="img-fluid rounded-5" style="max-width: 50%; max-height: 100%;">
+                            <p id="location" class="text-white fs-6 ms-3">Udaipur</p>
+                        </div>
+                        <div class="d-flex justify-content-center align-content-center mt-4" style="height:2.5rem;">
+                            <img src="./assets/xlogo.jpg" alt="twitter logo" class="img-fluid rounded-3" style="max-width: 14%; height:auto; object-fit: contain;">
+                            <p id="twitter_username" class="text-white fs-6 ms-3 pt-1">@super_div</p>
+                        </div>
+                        
+                    </div>
+                </div>  
+                <div class="col-md-9 rounded-start-3 text-xl" style="background-color: #303134;">
+                    <div class="d-flex mt-5 ms-5">
+                        <div class="d-flex align-items-center bg-dark p-3 rounded-3" style="width: max-content;">
+                            <img src="./assets/repo.png" alt="" class="img-fluid" style="width: 3.5rem; height:auto;">
+                            <div class="text-white d-flex align-items-center justify-content-center ms-3">
+                                <p id="public_repos" class="m-0 p-0 fs-3 me-2">0</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center bg-dark p-3 rounded-3 ms-4" style="width: max-content;">
+                            <img src="./assets/star.png" alt="" class="img-fluid" style="width: 3.5rem; height:auto;">
+                            <div class="text-white d-flex align-items-center justify-content-center ms-3">
+                                <p id="starred" class="m-0 p-0 fs-3 me-2">0</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center bg-dark p-3 rounded-3 ms-4" style="width: max-content;">
+                            <img src="./assets/followers.png" alt="" class="img-fluid" style="width: 3.5rem; height:auto;">
+                            <div class="text-white d-flex align-items-center justify-content-center ms-3">
+                                <p id="followers" class="m-0 p-0 fs-3 me-2">0</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center bg-dark p-3 rounded-3 ms-4" style="width: max-content;">
+                            <img src="./assets/following.png" alt="" class="img-fluid" style="width: 3.5rem; height:auto;">
+                            <div class="text-white d-flex align-items-center justify-content-center ms-3">
+                                <p id="following" class="m-0 p-0 fs-3 me-2">0</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="text-white ms-5 -5 mt-4"><p class="fs-4">Public Repositories</p></div>
+                    <div id="repos" class="d-flex mt-4 ms-5">
+
+                    </div>
+
+                 </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var languages = ['js', 'cpp', 'java', 'python', 'ruby', 'php', 'swift', 'go', 'other'];
+        var knownLanguages = ['js', 'cpp', 'java', 'python', 'ruby', 'php', 'swift', 'go'];
+
+        var gradients =[ ' linear-gradient(60deg, #DEBB00, #F0E68C) border-box; box-shadow: 0 0 10px #DEBB00;', 
+        'linear-gradient(60deg, blue, #00BFFF) border-box; box-shadow: 0 0 10px blue;', 
+        '   linear-gradient(60deg, #CB356B, #BD3F32) border-box;  box-shadow: 0 0 10px #BD3F32;',
+        'linear-gradient(60deg, #56ab2f, #a8e063) border-box; box-shadow: 0 0 10px #a8e063;',
+        'linear-gradient(60deg, #a8ff78, #78ffd6) border-box; box-shadow: 0 0 10px #78ffd6;',
+        'linear-gradient(60deg, #005AA7, #FFFDE4) border-box; box-shadow: 0 0 10px #FFFDE4;',
+        'linear-gradient(60deg, #DA4453, #89216B) border-box; box-shadow: 0 0 10px #89216B;',
+        'linear-gradient(60deg, #a8c0ff, #3f2b96) border-box; box-shadow: 0 0 10px #89216B;'
+        ]
+
+        var colorPairs = {
+            pair1: ['#DEBB00', '#F0E68C'],
+            pair2: ['#CB356B', '#BD3F32'],
+            pair3: ['#56ab2f', '#a8e063'],
+            pair4: ['#a8ff78', '#78ffd6'],
+            pair5: ['#4e54c8', '#8f94fb'],
+            pair6: ['#DA4453', '#89216B'],
+            pair7: ['#a8c0ff', '#3f2b96'],
+            pair8: ['#bc4e9c', '#f80759'],
+            pair9: ['#11998e', '#38ef7d'],
+            pair10: ['#FC5C7D', '#6A82FB'],
+            pair11: ['#fc4a1a', '#f7b733'],
+            pair12: ['#7F00FF', '#E100FF'],
+        };
+
+        var reposArray = [];
+
+        var username = localStorage?.getItem('username');
+        var name =""
+
+        fetch('https://api.github.com/users/' + username)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('User does not exist : Enter correct username');
+            }
+            return response.json();
+        })
+        .then(data => {
+            name = data.name;
+            document.getElementById('name').textContent = name;
+            document.getElementById('description').textContent = data.bio;
+            document.getElementById('url').innerHTML = '<a href="' + data.html_url + '" class="text-white">' + data.html_url + '</a>';
+            document.getElementById('location').textContent = data.location || 'Not Available';
+            document.getElementById('twitter_username').textContent = data.twitter_username || 'Not Available';
+            document.getElementById('public_repos').textContent = data.public_repos;
+            document.getElementById('followers').textContent = data.followers;
+            document.getElementById('following').textContent = data.following;
+            document.getElementById('avatar').innerHTML = '<img src="' + data.avatar_url + '" alt="" class="rounded-3 img-fluid" style="width: 12rem; height: auto;">';
+            return fetch('https://api.github.com/users/' + username + '/starred?per_page=1');
+        })
+        .then(response => {
+            const linkHeader = response.headers.get('Link');
+            if(linkHeader) {
+                const lastLink = linkHeader.split(', ').find(s => s.endsWith('rel="last"'));
+                const lastPageNumber = lastLink.match(/&page=(\d+)/)[1];
+                $('#starred').text(lastPageNumber);
+            }else{
+                $('#starred').text(0);
+            }
+        })
+        .then(() => {
+            return fetch('https://api.github.com/users/' + username + '/repos?per_page=10');
+        })
+        .then(response =>{
+            if (!response.ok) {
+                throw new Error('Something went wrong!');
+            }
+        })
+        .then(data => {
+            reposArray = reposArray.push(data);
+            console.log(reposArray);
+            $('#repos').append(
+                '<div class="text-white bg-dark px-3 rounded-3" style="width: 30%;"><div class="d-flex align-items-center pt-2"> <img src="./assets/repo-plain.png" alt="" class="img-fluid me-3" style="width:8%; height:100%"> <p class="fs-4 pt-2">Heroes</p></div><div><p class="mb-2 line-clamp-2" style="font-size: smaller;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae obcaecati quos possimus omnis quisquam expedita, maxime tempore laborum libero aut assumenda esse sed consequatur. Inventore animi molestias nesciunt veniam atque.</p></div><div id="topics" class="gap-md-4 gap-lg-3 mt-4 mb-4"></div></div>'
+            );
+        })
+        .catch(error => console.error('Error:', error));
+
+        console.log(name);
+
+        const topicss = [];
+        reposArray.forEach(function(repo) {
+            topicss = repo.topics;
+        });
+
+        console.log(topicss);
+
+        $.each(languages, function(index, value) {
+            var colorClass = knownLanguages.includes(value) ? value : 'default';
+            var randomPairKey = Object.keys(colorPairs)[Math.floor(Math.random() * Object.keys(colorPairs).length)];
+            var randomPair = colorPairs[randomPairKey];
+            $('#topics').append('<div class="topics-child p-1 m-0 rounded-2 d-flex justify-content-center align-items-center min-w-auto overflow-hidden' + colorClass + '" style=" background: linear-gradient(#202124, #202124) padding-box, linear-gradient(60deg,' + randomPair[0] + ', '+randomPair[1] +') border-box; box-shadow: 0 0 10px '+ randomPair[1] +';" >' + '<p class="px-3 m-0 fw-bold" style="font-size: x-small">'+ value +'</p>' + '</div>');
+        });
+    });
+</script>
+</html>
