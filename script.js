@@ -36,22 +36,22 @@ $(document).ready(function() {
             if (!response.ok) {
                 if(response.status==404){
                     alert('User does not exist : Enter correct username');
-                    window.location.href = "home.html";
+                    window.location.href = "index.html";
                     throw new Error('User does not exist : Enter correct username');
                 }
                 if(response.status==403 || response.status==429){
                     alert('API rate limit exceeded');
-                    window.location.href = "home.html";
+                    window.location.href = "index.html";
                     throw new Error('API rate limit exceeded');
                 }
                 if(response.status==401){
                     alert('Unauthorized');
-                    window.location.href = "home.html";
+                    window.location.href = "index.html";
                     throw new Error('Unauthorized');
                 }
                 if(response.status==500){
                     alert('Internal Server Error');
-                    window.location.href = "home.html";
+                    window.location.href = "index.html";
                     throw new Error('Internal Server Error');
                 }
     
@@ -74,22 +74,22 @@ $(document).ready(function() {
             const starredResponse = await fetch('https://api.github.com/users/' + username + '/starred?per_page=1');
             if(starredResponse.status==404){
                 alert('User does not exist : Enter correct username');
-                window.location.href = "home.html";
+                window.location.href = "index.html";
                 throw new Error('User does not exist : Enter correct username');
             }
             if(starredResponse.status==403 || starredResponse.status==429){
                 alert('API rate limit exceeded');
-                window.location.href = "home.html";
+                window.location.href = "index.html";
                 throw new Error('API rate limit exceeded');
             }
             if(starredResponse.status==401){
                 alert('Unauthorized');
-                window.location.href = "home.html";
+                window.location.href = "index.html";
                 throw new Error('Unauthorized');
             }
             if(starredResponse.status==500){
                 alert('Internal Server Error');
-                window.location.href = "home.html";
+                window.location.href = "index.html";
                 throw new Error('Internal Server Error');
             }
             const linkHeader = starredResponse.headers.get('Link');
@@ -110,7 +110,7 @@ $(document).ready(function() {
         window.onload = function() {
             fetchUserData();
         };
-        
+
         if (!localStorage.getItem('firstLoad')) {
             localStorage.setItem('firstLoad', true);
             window.location.reload();
@@ -134,22 +134,22 @@ $(document).ready(function() {
                 if (!response.ok) {
                     if(response.status==404){
                         alert('User does not exist : Enter correct username');
-                        window.location.href = "home.html";
+                        window.location.href = "index.html";
                         throw new Error('User does not exist : Enter correct username');
                     }
                     if(response.status==403 || response.status==429){
                         alert('API rate limit exceeded');
-                        window.location.href = "home.html";
+                        window.location.href = "index.html";
                         throw new Error('API rate limit exceeded');
                     }
                     if(response.status==401){
                         alert('Unauthorized');
-                        window.location.href = "home.html";
+                        window.location.href = "index.html";
                         throw new Error('Unauthorized');
                     }
                     if(response.status==500){
                         alert('Internal Server Error');
-                        window.location.href = "home.html";
+                        window.location.href = "index.html";
                         throw new Error('Internal Server Error');
                     }
                 }else{
@@ -182,7 +182,7 @@ $(document).ready(function() {
                             repo.description = 'No description available';
                         }
                     $('#repos').append(
-                        '<div id="repo" class="me-4 mb-3 text-white bg-dark px-3 rounded-3" style="width: 30%;"><div class="d-flex align-items-center pt-2"><img src="./assets/repo-plain.png" alt="" class="img-fluid me-3" style="width:8%; height:100%"><a href="'+repo.html_url+'" class="fs-4 pt-2 mb-3 line-clamp-1" style="max-width:100%">'+ repo.name +'</a></div><div><p class="mb-3 line-clamp-2" style="font-size: smaller;">'+ repo.description +'.</p></div><div id="language" class="d-flex align-items-center"><div class="rounded-circle" style="height: 1.2rem; width: 1.2rem; background: linear-gradient(60deg,' + randomPair[0] + ', '+randomPair[1] +')"></div><p class="ms-2 mb-0 text-white" style="font-size:0.8rem">'+repo.language+'</p></div><div id="topics'+i+'" class="gap-md-4 gap-lg-3 mt-4 mb-4" style="  display: flex; flex-wrap: wrap; width: 100%;">'+ repo.topics +'</div></div>'
+                        '<div id="repo" class="me-4 mb-3 text-white bg-dark px-3 rounded-3" style="width: 30%;"><div class="d-flex align-items-center pt-2"><img src="./assets/images/repo-plain.png" alt="" class="img-fluid me-3" style="width:8%; height:100%"><a href="'+repo.html_url+'" class="fs-4 pt-2 mb-3 line-clamp-1" style="max-width:100%">'+ repo.name +'</a></div><div><p class="mb-3 line-clamp-2" style="font-size: smaller;">'+ repo.description +'.</p></div><div id="language" class="d-flex align-items-center"><div class="rounded-circle" style="height: 1.2rem; width: 1.2rem; background: linear-gradient(60deg,' + randomPair[0] + ', '+randomPair[1] +')"></div><p class="ms-2 mb-0 text-white" style="font-size:0.8rem">'+repo.language+'</p></div><div id="topics'+i+'" class="gap-md-4 gap-lg-3 mt-4 mb-4" style="  display: flex; flex-wrap: wrap; width: 100%;">'+ repo.topics +'</div></div>'
                     )
                     console.log(repo.topics);
     
@@ -280,22 +280,22 @@ $(document).ready(function() {
                 if (!response.ok) {
                     if(response.status==404){
                         alert('User does not exist : Enter correct username');
-                        window.location.href = "home.html";
+                        window.location.href = "index.html";
                         throw new Error('User does not exist : Enter correct username');
                     }
                     if(response.status==403 || response.status==429){
                         alert('API rate limit exceeded');
-                        window.location.href = "home.html";
+                        window.location.href = "index.html";
                         throw new Error('API rate limit exceeded');
                     }
                     if(response.status==401){
                         alert('Unauthorized');
-                        window.location.href = "home.html";
+                        window.location.href = "index.html";
                         throw new Error('Unauthorized');
                     }
                     if(response.status==500){
                         alert('Internal Server Error');
-                        window.location.href = "home.html";
+                        window.location.href = "index.html";
                         throw new Error('Internal Server Error');
                     }
                 }
@@ -307,7 +307,7 @@ $(document).ready(function() {
                 console.log(searchArray);
                 $.each(searchArray, function(i, repo){
                     $('#searchesContainer').append(
-                        '<div id="repo" class="me-4 mb-3 text-white bg-dark px-3 rounded-3" style="width: 30%;"><div class="d-flex align-items-center pt-2"><img src="./assets/repo-plain.png" alt="" class="img-fluid me-3" style="width:8%; height:100%"><p class="fs-4 pt-2">'+ repo.name +'</p></div><div><p class="mb-2 line-clamp-2" style="font-size: smaller;">'+ repo.description +'.</p></div><div id="topics'+i+'" class="gap-md-4 gap-lg-3 mt-4 mb-4" style="  display: flex; flex-wrap: wrap; width: 100%;">'+ repo.topics +'</div></div>'
+                        '<div id="repo" class="me-4 mb-3 text-white bg-dark px-3 rounded-3" style="width: 30%;"><div class="d-flex align-items-center pt-2"><img src="./assets/images/repo-plain.png" alt="" class="img-fluid me-3" style="width:8%; height:100%"><a href="'+repo.html_url+'" class="fs-4 pt-2 mb-3 line-clamp-1" style="max-width:100%">'+ repo.name +'</a></div><div><p class="mb-2 line-clamp-2" style="font-size: smaller;">'+ repo.description +'.</p></div><div id="topics'+i+'" class="gap-md-4 gap-lg-3 mt-4 mb-4" style="  display: flex; flex-wrap: wrap; width: 100%;">'+ repo.topics +'</div></div>'
                     )
                     console.log(repo.topics);
     

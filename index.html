@@ -1,127 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>See</title>
+    <title>Page 1</title>
+    <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
     <script src='assets/bootstrap/js/bootstrap.min.js'></script>
     <style>
-        .line-clamp {
-            max-width: 70%;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            -webkit-line-clamp: 4; 
+        body {
+            background-image: url('assets/images/home-bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0px;
+            padding: 0px;
         }
 
-        .line-clamp-2 {
-            max-width: 100%;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            -webkit-line-clamp: 2; 
+        #mainImage{
+            width:25vw;
+            height:auto;
+            margin-top: 5rem;
         }
+
+        #username {
+            width: 20vw;
+            margin-right: 1rem;
+        }
+
+        #heading {
+            font-size: 3rem;
+        }
+
+        #description {
+            font-size: 1rem;
+        }
+
+        @media(max-width: 992px) { 
+            .container {
+                flex-direction: column-reverse;
+            }
+            #mainImage {
+                min-width: 80vw;
+                min-height: 40vh;
+            }
+
+            #text {
+                margin: 0px;
+                padding: 0px;
+                width: 80vw;
+                margin-top: 3rem;
+            }   
+
+            #heading {
+                font-size: 5rem;
+            }
+    
+            #description {
+                font-size: 2rem;
+            }
+
+            #username, #submit {
+                font-size: 2rem;
+                width: 80vw;
+                margin-right: 1rem;
+            }
+
+    
+        }
+
     </style>
+
 </head>
-<body style="background-color: #202124;">
-    <div class="vh-100 overflow-x-hidden">
-        <div class="m-0 p-0 container container-fluid" style="width: max-content;">
-            <div class="row col vh-100 vw-100 pt-3 overflow-hidden-lg">
-                <div id="loader" class=" z-1 vh-100 d-flex justify-content-center align-items-center d-flex flex-column">
-                    <img src="./assets/loading.gif" alt="" style="height: 20vh;">
-                    <div class="text-white">Loading</div>
-                </div>
-                <div id="info" class="col-12 col-lg-3" style="">
-                    <div class="d-flex flex-column justify-content-center align-items-center p-4">
-                        <div id="avatar"></div>
-                        <p id="name" class="text-white font-weight-bold pt-3 fs-5"></p>
-                        <p id="url" class="text-white"> </p>
-                        <p id="description" class="text-white text-center fs-6 line-clamp" style="max-width: 10rem;"></p>
-                        <div class="d-flex justify-content-center align-content-center mt-2" style="height: 1.5rem;">
-                            <img src="./assets/location-pin.png" alt="" class="img-fluid rounded-5" style="max-width: 50%; max-height: 100%;">
-                            <p id="location" class="text-white fs-6 ms-3">Udaipur</p>
-                        </div>
-                        <div class="d-flex justify-content-center align-content-center mt-4" style="height: 2.5rem;">
-                            <img src="./assets/xlogo.jpg" alt="twitter logo" class="img-fluid rounded-3" style="max-width: 14%; height:auto; object-fit: contain;">
-                            <p id="twitter_username" class="text-white fs-6 ms-3 pt-1">@super_div</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- <div class="col-md-3"></div> -->
-  
-                <div id="other" class="col-12 col-lg-9 rounded-start-3 text-xl overflow-scroll" style="background-color: #303134;">
-                    <div class="d-flex flex-wrap mt-5 ms-5">
-                        <div class="d-flex align-items-center bg-dark p-3 rounded-3 me-4 mb-3" style="width: max-content;">
-                            <img src="./assets/repo.png" alt="" class="img-fluid" style="width: 3.5rem; height:auto;">
-                            <div class="text-white d-flex align-items-center justify-content-center ms-3">
-                                <p id="public_repos" class="m-0 p-0 fs-3 me-2">0</p>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center bg-dark p-3 rounded-3 me-4 mb-3" style="width: max-content;">
-                            <img src="./assets/star.png" alt="" class="img-fluid" style="width: 3.5rem; height:auto;">
-                            <div class="text-white d-flex align-items-center justify-content-center ms-3">
-                                <p id="starred" class="m-0 p-0 fs-3 me-2">0</p>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center bg-dark p-3 rounded-3 me-4 mb-3" style="width: max-content;">
-                            <img src="./assets/followers.png" alt="" class="img-fluid" style="width: 3.5rem; height:auto;">
-                            <div class="text-white d-flex align-items-center justify-content-center ms-3">
-                                <p id="followers" class="m-0 p-0 fs-3 me-2">0</p>
-                            </div>
-                        </div>
-                        
-                        <div class="d-flex align-items-center bg-dark p-3 rounded-3 me-4 mb-3" style="width: max-content;">
-                            <img src="./assets/following.png" alt="" class="img-fluid" style="width: 3.5rem; height:auto;">
-                            <div class="text-white d-flex align-items-center justify-content-center ms-3">
-                                <p id="following" class="m-0 p-0 fs-3 me-2">0</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="text-white ms-5 -5 mt-4"><p class="fs-4">Public Repositories</p></div>
-                    
-                    <div class="d-flex justify-content-between ms-5">
-                        <div>
-                            <button id="changeButton" class="btn btn-dark"> Click to Change Requests Per Page</button>
-                            <div id="sliderContainer" class="p-2 text-white rounded-4" style="display: none; background: linear-gradient(90deg, #FF7155 0%, #ED257D 100%);">
-                                <label for="requestsPerPage" class="ms-2 mb-2">Requests Per Page: <span id="requestsPerPageValue">10</span></label>
-                                <input type="range" id="requestsPerPage" name="requestsPerPage" class="ms-lg-2" style="color: blue;" min="1" max="100" value="10">
-                                <button id="submitChanges" class="btn btn-dark ms-lg-4 mt-lg-0 mt-md-3 mt-sm-3">Submit Changes</button>
-                            </div>
-                        </div>
-                        <div id="search" class="d-flex justify-content-center align-items-center gap-2 px-2 rounded-3">
-                            <input type="text" id="searchBox" class="rounded-3 px-3" placeholder="Search the user's repositories..." style="width: 100%;" />
-                            <button id="searchButton" class="btn btn-dark">Search</button>
-                        </div>
-                    </div>
-
-                    <div id="pagination" class="mt-4 ms-5 d-flex justify-content-center align-items-center">
-                        <button id="prevPageBtn" class="btn btn-dark" disabled><img src="./assets/previous.png" style="height:1.3rem;"></button>
-                        <div id="paginationContainer" class="d-flex"></div>
-                        <button id="nextPageBtn" class="btn btn-dark"><img src="./assets/next.png" style="height:1.3rem;"></button>
-                    </div>
-                    <div id="searches" class="mt-4 ms-5 px-2 py-3 rounded-3" style="border:2px solid white;">
-                        <button id="hide-search" class="btn btn-dark mt-2 mb-3 ">Hide Searches</button>
-                        <div id="searchesContainer" class="d-flex flex-wrap" style="width:60vw; height:auto;"></div>
-                    </div>
-                    <div id="repos" class="mt-4 ms-5">
-                        <div id="loader2" class=" z-1 d-flex justify-content-center align-items-center d-flex flex-column">
-                            <img src="./assets/loading.gif" alt="" style="height: 20vh;">
-                            <div class="text-white">Loading</div>
-                        </div>
-                    </div>
-
-                 </div>
+<body>
+    <div class="container d-flex flex-lg-row flex-md-column-reverse justify-content-lg-center align-items-lg-center">
+        <div class="d-flex flex-column" style="width: 30vw;">
+            <div id="text" class="d-flex flex-column text-white">
+                <div id="heading" class="font-monospace">GitUncovered</div>
+                <div id="description" class="mt-2 mb-2 font-monospace">Discover the world of coding with GitUncovered. Enter a GitHub username and explore their repositories at your fingertips. Dive deeper into open-source and uncover the treasures of coding. GitUncovered - your gateway to the universe of GitHub.</div>
             </div>
+            <div class="form-group d-flex flex-row pt-3">
+                <input id="username" type="text" class="form-control" placeholder="Enter the username...">
+                <button id="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </div>
+        <div>
+            <img id="mainImage" src="./assets/images/earth-man.svg" class="img-fluid" alt="">
         </div>
     </div>
+
+
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            localStorage.clear();
+
+            $('#username').on('keypress', function (e) {
+                if (e.which == 13) { 
+                    $('#submit').click(); 
+                }
+            });
+
+            $('#submit').click(function() {
+                var username = $('#username').val();
+                localStorage.setItem('username', username);
+                window.location.href = "main.html";
+            });
+        });
+    </script>
 </body>
-<script src="jquery-3.7.1.min.js"></script>
-<script src="./script.js"></script>
 </html>
