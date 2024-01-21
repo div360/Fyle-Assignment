@@ -1,4 +1,4 @@
-# Heading level 1 GitUncovered: Github Repositories Listing Page
+# GitUncovered: Github Repositories Listing Page
 This project is a web app that displays the public Github repositories belonging to any specific user. It uses the Github REST API to fetch the data and Bootstrap and Jquery for the UI. It has the following features:
 
 - Server-side pagination: The user can choose how many repositories to show per page, from 10 to 100, using a slider. The app will make API calls accordingly and show the results in a table.
