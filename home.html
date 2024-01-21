@@ -5,20 +5,102 @@
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <script src='assets/bootstrap/js/bootstrap.min.js'></script>
+    <style>
+        body {
+            background-image: url('assets/home-bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #mainImage{
+            width:25vw;
+            height:auto;
+            margin-top: 5rem;
+        }
+
+        #username {
+            width: 20vw;
+            margin-right: 1rem;
+        }
+
+        #heading {
+            font-size: 3rem;
+        }
+
+        #description {
+            font-size: 1rem;
+        }
+
+        @media(max-width: 992px) { 
+            .container {
+                flex-direction: column-reverse;
+            }
+            #mainImage {
+                min-width: 80vw;
+                min-height: 40vh;
+            }
+
+            #text {
+                margin: 0px;
+                padding: 0px;
+                width: 80vw;
+                margin-top: 3rem;
+            }   
+
+            #heading {
+                font-size: 5rem;
+            }
+    
+            #description {
+                font-size: 2rem;
+            }
+
+            #username, #submit {
+                font-size: 2rem;
+                width: 80vw;
+                margin-right: 1rem;
+            }
+
+    
+        }
+
+    </style>
+
 </head>
 <body>
-    <div class="container">
-        <div class="form-group">
-            <label for="username">Enter your username:</label>
-            <input type="text" class="form-control" id="username">
+    <div class="container d-flex flex-lg-row flex-md-column-reverse justify-content-lg-center align-items-lg-center">
+        <div class="d-flex flex-column" style="width: 30vw;">
+            <div id="text" class="d-flex flex-column text-white">
+                <div id="heading" class="font-monospace">GitUncovered</div>
+                <div id="description" class="mt-2 mb-2 font-monospace">Discover the world of coding with GitUncovered. Enter a GitHub username and explore their repositories at your fingertips. Dive deeper into open-source and uncover the treasures of coding. GitUncovered - your gateway to the universe of GitHub.</div>
+            </div>
+            <div class="form-group d-flex flex-row pt-3">
+                <input id="username" type="text" class="form-control" placeholder="Enter the username...">
+                <button id="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </div>
+        <div>
+            <img id="mainImage" src="./assets/earth-man.svg" class="img-fluid" alt="">
         </div>
-        <button id="submit" class="btn btn-primary">Submit</button>
     </div>
 
-    <!-- Include jQuery -->
+
     <script src="jquery-3.7.1.min.js"></script>
     <script>
         $(document).ready(function() {
+            localStorage.clear();
+
+            $('#username').on('keypress', function (e) {
+                if (e.which == 13) { 
+                    $('#submit').click(); 
+                }
+            });
+
             $('#submit').click(function() {
                 var username = $('#username').val();
                 localStorage.setItem('username', username);
