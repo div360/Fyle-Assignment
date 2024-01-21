@@ -278,6 +278,7 @@ $(document).ready(function() {
         $('#searchButton').on('click', function () {
             $('#searches').show();
             var searchQuery = $('#searchBox').val();
+            searchQuery = searchQuery.replace(/[^\w\s]/gi, '');
             var searchUrl = 'https://api.github.com/search/repositories?q=' + searchQuery + '+user:' + username;
             fetch(searchUrl)
             .then(response => {
@@ -308,6 +309,7 @@ $(document).ready(function() {
             .then(data => {
                 $('#searchesContainer').empty();
                 searchArray = data.items;
+                
                 console.log(searchArray);
                 $.each(searchArray, function(i, repo){
                     $('#searchesContainer').append(
