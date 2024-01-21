@@ -60,16 +60,17 @@ $(document).ready(function() {
 
             const data = await response.json();
             hideLoadingIndicator();
-            name = data.name;
+            userData = data;
+            name = userData.name;
             $('#name').text(name);
-            $('#description').text(data.bio);
-            $('#url').html('<a href="' + data.html_url + '" class="text-white">' + data.html_url + '</a>');
-            $('#location').text(data.location || 'Not Available');
-            $('#twitter_username').text(data.twitter_username || 'Not Available');
-            $('#public_repos').text(data.public_repos);
-            $('#followers').text(data.followers);
-            $('#following').text(data.following);
-            $('#avatar').html('<img src="' + data.avatar_url + '" alt="" class="rounded-3 img-fluid" style="width: 12rem; height: auto;">');
+            $('#description').text(userData.bio);
+            $('#url').html('<a href="' + userData.html_url + '" class="text-white">' + userData.html_url + '</a>');
+            $('#location').text(userData.location || 'Not Available');
+            $('#twitter_username').text(userData.twitter_username || 'Not Available');
+            $('#public_repos').text(userData.public_repos);
+            $('#followers').text(userData.followers);
+            $('#following').text(userData.following);
+            $('#avatar').html('<img src="' + userData.avatar_url + '" alt="" class="rounded-3 img-fluid" style="width: 12rem; height: auto;">');
 
             const starredResponse = await fetch('https://api.github.com/users/' + username + '/starred?per_page=1');
             if(starredResponse.status==404){
