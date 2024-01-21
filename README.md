@@ -19,19 +19,19 @@ Navigate to the project folder using
 ### Assumptions
 Some of the assumptions I made while working on this project are:
 
--The user will enter a valid Github username in the search bar. If the username is invalid or not found, the app will show an error message.
--The user will not enter any special characters or spaces in the search bar. The app will ignore them if they do.
--The user will have a stable internet connection and will not cancel the API calls. The app will handle any network errors gracefully.
+- The user will enter a valid Github username in the search bar. If the username is invalid or not found, the app will show an error message.
+- The user will not enter any special characters or spaces in the search bar. The app will ignore them if they do.
+- The user will have a stable internet connection and will not cancel the API calls. The app will handle any network errors gracefully.
 
 ### Challenges
 Some of the challenges I faced while working on this project are:
 
--Implementing server-side pagination with the Github API, which has a limit of 100 items per page and requires specifying the page number and per_page parameters in the request.
--Displaying the topics of each repository, which are not included in the default response of the API and require making a separate request for each repository.
--Preserving the page status in the local storage, which involves saving and retrieving the relevant data and updating the UI accordingly.
+- Implementing server-side pagination with the Github API, which has a limit of 100 items per page and requires specifying the page number and per_page parameters in the request.
+- Displaying the topics of each repository, which are not included in the default response of the API and require making a separate request for each repository.
+- Preserving the page status in the local storage, which involves saving and retrieving the relevant data and updating the UI accordingly.
 
 ### Future Improvements
 Some of the future improvements or features I would like to add to this project are:
 
--Adding a sort functionality to sort the repositories by name, date, size, stars, forks, etc.
--Adding a filter functionality to filter the repositories by language, license, visibility, etc.
+- Adding a sort functionality to sort the repositories by name, date, size, stars, forks, etc.
+- Adding a filter functionality to filter the repositories by language, license, visibility, etc.
