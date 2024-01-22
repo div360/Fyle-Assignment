@@ -74,7 +74,29 @@ $(document).ready(function() {
             if(userData.twitter_username==null){
                 userData.twitter_username = 'Not Available';
             }
-            $('#info').append(' <div class="d-flex flex-column justify-content-center align-items-center p-4"><div id="avatar"><img src="' + userData.avatar_url + '" alt="" class="rounded-3 img-fluid" style="width: 12rem; height: auto;"></div><p id="name" class="text-white font-weight-bold pt-3 fs-5">'+userData.name+'</p><p id="url" class="text-white"><a href="' + userData.html_url + '" class="text-white">' + userData.html_url + '</a></p><p id="description" class="text-white text-center fs-6 line-clamp" style="max-width: 10rem;">'+userData.bio+'</p><div class="d-flex justify-content-center align-content-center mt-2" style="height: 1.5rem;"><img src="./assets/images/location-pin.png" alt="" class="img-fluid rounded-5" style="max-width: 50%; max-height: 100%;"><p id="location" class="text-white fs-6 ms-3">'+userData.location+'</p></div><div class="d-flex justify-content-center align-content-center mt-4" style="height: 2.5rem;"><img src="./assets/images/xlogo.jpg" alt="twitter logo" class="img-fluid rounded-3" style="max-width: 14%; height:auto; object-fit: contain;"><p id="twitter_username" class="text-white fs-6 ms-3 pt-1">'+userData.twitter_username+'</p></div></div>')
+
+            if(userData.bio==null){
+                userData.bio = 'No bio available';
+            }
+            $('#info').append(`<div class="d-flex flex-column justify-content-center align-items-center p-4">
+                <div id="avatar">
+                    <img src="` + userData.avatar_url + `" alt="" class="rounded-3 img-fluid" style="width: 12rem; height: auto;">
+                </div>
+                <p id="name" class="text-white font-weight-bold pt-3 fs-5">`+userData.name+`</p>
+                <p id="url" class="text-white">
+                    <a href="` + userData.html_url + `" class="text-white">` + userData.html_url + `</a>
+                    </p>
+                    
+                    <p id="description" class="text-white text-center fs-6 line-clamp" style="max-width: 10rem;">`+userData.bio+`</p>
+                    
+                    <div class="d-flex justify-content-center align-content-center mt-2" style="height: 1.5rem;">
+                        <img src="./assets/images/location-pin.png" alt="" class="img-fluid rounded-5" style="max-width: 50%; max-height: 100%;"><p id="location" class="text-white fs-6 ms-3">`+userData.location+`</p>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center align-content-center mt-4" style="height: 2.5rem;">
+                    <img src="./assets/images/xlogo.jpg" alt="twitter logo" class="img-fluid rounded-3" style="max-width: 14%; height:auto; object-fit: contain;">
+                    <p id="twitter_username" class="text-white fs-6 ms-3 pt-1">`+userData.twitter_username+`</p>
+                    </div></div>`)
 
             const starredResponse = await fetch('https://api.github.com/users/' + username + '/starred?per_page=1');
             if(starredResponse.status==404){
