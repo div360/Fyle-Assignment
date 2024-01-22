@@ -60,17 +60,21 @@ $(document).ready(function() {
 
             const data = await response.json();
             hideLoadingIndicator();
-            userData = data;
+            var userData = data;
+            console.log(userData);
             name = userData.name;
-            $('#name').text(name);
-            $('#description').text(userData.bio);
-            $('#url').html('<a href="' + userData.html_url + '" class="text-white">' + userData.html_url + '</a>');
-            $('#location').text(userData.location || 'Not Available');
-            $('#twitter_username').text(userData.twitter_username || 'Not Available');
             $('#public_repos').text(userData.public_repos);
             $('#followers').text(userData.followers);
             $('#following').text(userData.following);
             $('#avatar').html('<img src="' + userData.avatar_url + '" alt="" class="rounded-3 img-fluid" style="width: 12rem; height: auto;">');
+
+            if(userData.location==null){
+                userData.location = 'Not Available';
+            }
+            if(userData.twitter_username==null){
+                userData.twitter_username = 'Not Available';
+            }
+            $('#info').append(' <div class="d-flex flex-column justify-content-center align-items-center p-4"><div id="avatar"><img src="' + userData.avatar_url + '" alt="" class="rounded-3 img-fluid" style="width: 12rem; height: auto;"></div><p id="name" class="text-white font-weight-bold pt-3 fs-5">'+userData.name+'</p><p id="url" class="text-white"><a href="' + userData.html_url + '" class="text-white">' + userData.html_url + '</a></p><p id="description" class="text-white text-center fs-6 line-clamp" style="max-width: 10rem;">'+userData.bio+'</p><div class="d-flex justify-content-center align-content-center mt-2" style="height: 1.5rem;"><img src="./assets/images/location-pin.png" alt="" class="img-fluid rounded-5" style="max-width: 50%; max-height: 100%;"><p id="location" class="text-white fs-6 ms-3">'+userData.location+'</p></div><div class="d-flex justify-content-center align-content-center mt-4" style="height: 2.5rem;"><img src="./assets/images/xlogo.jpg" alt="twitter logo" class="img-fluid rounded-3" style="max-width: 14%; height:auto; object-fit: contain;"><p id="twitter_username" class="text-white fs-6 ms-3 pt-1">'+userData.twitter_username+'</p></div></div>')
 
             const starredResponse = await fetch('https://api.github.com/users/' + username + '/starred?per_page=1');
             if(starredResponse.status==404){
@@ -186,7 +190,7 @@ $(document).ready(function() {
                             repo.description = 'No description available';
                         }
                     $('#repos').append(
-                        '<div id="repo" class="me-4 mb-3 text-white bg-dark px-3 rounded-3" style="width: 30%;"><div class="d-flex align-items-center pt-2"><img src="./assets/images/repo-plain.png" alt="" class="img-fluid me-3" style="width:8%; height:100%"><a href="'+repo.html_url+'" class="fs-4 pt-2 mb-3 line-clamp-1" style="max-width:100%">'+ repo.name +'</a></div><div><p class="mb-3 line-clamp-2" style="font-size: smaller;">'+ repo.description +'.</p></div><div id="language" class="d-flex align-items-center"><div class="rounded-circle" style="height: 1.2rem; width: 1.2rem; background: linear-gradient(60deg,' + randomPair[0] + ', '+randomPair[1] +')"></div><p class="ms-2 mb-0 text-white" style="font-size:0.8rem">'+repo.language+'</p></div><div id="topics'+i+'" class="gap-md-4 gap-lg-3 mt-4 mb-4" style="  display: flex; flex-wrap: wrap; width: 100%;"></div></div>'
+                        '<div id="repo" class="me-4 mb-3 text-white bg-dark px-3 rounded-3" style="width: 30%;"><div class="d-flex align-items-center pt-2"><img src="./assets/images/repo-plain.png" alt="" class="img-fluid me-3" style="width:8%; height:100%"><a href="'+repo.html_url+'" class="fs-4 pt-2 mb-3 line-clamp-1 text-overflow-ellipsis" style="max-width:100%">'+ repo.name +'</a></div><div><p class="mb-3 line-clamp-2" style="font-size: smaller;">'+ repo.description +'.</p></div><div id="language" class="d-flex align-items-center"><div class="rounded-circle" style="height: 1.2rem; width: 1.2rem; background: linear-gradient(60deg,' + randomPair[0] + ', '+randomPair[1] +')"></div><p class="ms-2 mb-0 text-white" style="font-size:0.8rem">'+repo.language+'</p></div><div id="topics'+i+'" class="gap-md-4 gap-lg-3 mt-4 mb-4" style="  display: flex; flex-wrap: wrap; width: 100%;"></div></div>'
                     )
                     console.log(repo.topics);
     
@@ -313,7 +317,7 @@ $(document).ready(function() {
                 console.log(searchArray);
                 $.each(searchArray, function(i, repo){
                     $('#searchesContainer').append(
-                        '<div id="repo" class="me-4 mb-3 text-white bg-dark px-3 rounded-3" style="width: 30%;"><div class="d-flex align-items-center pt-2"><img src="./assets/images/repo-plain.png" alt="" class="img-fluid me-3" style="width:8%; height:100%"><a href="'+repo.html_url+'" class="fs-4 pt-2 mb-3 line-clamp-1" style="max-width:100%">'+ repo.name +'</a></div><div><p class="mb-2 line-clamp-2" style="font-size: smaller;">'+ repo.description +'.</p></div><div id="topics'+i+'" class="gap-md-4 gap-lg-3 mt-4 mb-4" style="  display: flex; flex-wrap: wrap; width: 100%;">'+ repo.topics +'</div></div>'
+                        '<div id="repo" class="me-4 mb-3 text-white bg-dark px-3 rounded-3" style="width: 30%;"><div class="d-flex align-items-center pt-2"><img src="./assets/images/repo-plain.png" alt="" class="img-fluid me-3" style="width:8%; height:100%"><a href="'+repo.html_url+'" class="fs-4 pt-2 mb-3 line-clamp-1 text-overflow-ellipsis" style="max-width:100%">'+ repo.name +'</a></div><div><p class="mb-2 line-clamp-2" style="font-size: smaller;">'+ repo.description +'.</p></div><div id="topics'+i+'" class="gap-md-4 gap-lg-3 mt-4 mb-4" style="  display: flex; flex-wrap: wrap; width: 100%;">'+ repo.topics +'</div></div>'
                     )
                     console.log(repo.topics);
     

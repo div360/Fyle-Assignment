@@ -141,6 +141,12 @@ body {
   margin-top: -27.5px;
 }
 
+.text-overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .square {
   background: white;
   width: 15px;

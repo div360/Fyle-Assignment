@@ -103,9 +103,17 @@
 
             $('#submit').click(function() {
                 var username = $('#username').val();
-                localStorage.setItem('username', username);
-                window.location.href = "main.html";
+                var githubUsernameRegex = /^[a-z\d]{0,38}$/i;
+                if (username == "" || username == null || username == " ") {
+                    alert('Please enter a Github username');
+                    return false;
+                } else {
+                    console.log('Valid username')
+                    localStorage.setItem('username', username);
+                    window.location.href = "main.html";
+                }
             });
+            
         });
     </script>
 </body>
